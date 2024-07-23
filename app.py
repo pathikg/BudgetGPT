@@ -11,6 +11,12 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+if os.getenv("OPENAI_API_KEY") is None:
+    st.error("Please set the OPENAI_API_KEY environment variable.")
+    st.stop()
+
 # Constants
 OPENAI_SUMMARY_MODEL = "gpt-4o-mini"
 OPENAI_QA_MODEL = "gpt-4o-mini"
